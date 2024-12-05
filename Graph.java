@@ -7,7 +7,7 @@ public class Graph {
         adjList = new HashMap<>();
     }
 
-    public void addEdge(String from, String to, int energyCost) {
+    public void addEdge(Object from, Object to, int energyCost) {
         adjList.computeIfAbsent(from, k -> new ArrayList<>()).add(new Edge(to, energyCost));
         adjList.computeIfAbsent(to, k -> new ArrayList<>()).add(new Edge(from, energyCost));
     }

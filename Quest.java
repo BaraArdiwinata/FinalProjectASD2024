@@ -1,23 +1,20 @@
 public class Quest {
     private String name;
-    private int energyRequired;
     private int coinReward;
     private int energyRestored; // Hanya relevan untuk side quest
     private boolean isMainQuest; // Menentukan apakah quest ini main atau side quest
 
     // Constructor untuk MainQuest
-    public Quest(String name, int energyRequired, int coinReward, boolean isMainQuest) {
+    public Quest(String name) {
         this.name = name;
-        this.energyRequired = energyRequired;
-        this.coinReward = coinReward;
-        this.energyRestored = 0; // Default untuk MainQuest
-        this.isMainQuest = isMainQuest;
+        this.coinReward = 0;
+        this.energyRestored = 0;
+        this.isMainQuest = true;
     }
 
     // Constructor untuk SideQuest
-    public Quest(String name, int energyRequired, int coinReward, int energyRestored) {
+    public Quest(String name, int coinReward, int energyRestored) {
         this.name = name;
-        this.energyRequired = energyRequired;
         this.coinReward = coinReward;
         this.energyRestored = energyRestored;
         this.isMainQuest = false;
@@ -25,10 +22,6 @@ public class Quest {
 
     public String getName() {
         return name;
-    }
-
-    public int getEnergyRequired() {
-        return energyRequired;
     }
 
     public int getCoinReward() {

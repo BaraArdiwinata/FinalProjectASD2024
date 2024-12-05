@@ -14,35 +14,46 @@ public class GameEngine {
     }
 
     // Metode untuk memulai permainan
-    public void startGame(Monster monster) {
+    public void startGame(Monster monster, String start) {
         System.out.println("Starting the game...");
-        String currentQuest = "S1"; // Quest awal
+//        Pusaka pusaka = new Pusaka(start, potter);
+        String currentQuest = start; // Quest awal
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
+            //Temukan Quest saat ini berdasarkan nama Quest
             Quest current = findQuestByName(currentQuest);
             if (current != null) {
                 executeQuest(current);
+                potter.printStatus();
             }
 
+            //Simpan Quest berikutnya dari currentQuest dalam List
             List<String> nextQuests = questGraph.getOrDefault(currentQuest, Collections.emptyList());
             if (nextQuests == null || nextQuests.isEmpty()) {
                 System.out.println("You have reached the finish point of your journey!");
                 break;
             }
 
+            //Tampilkan Quest berikutnya
             System.out.println("Here are your quest options:");
             for (int i = 0; i < nextQuests.size(); i++) {
                 Quest quest = findQuestByName(nextQuests.get(i));
                 System.out.printf("%d. %s (Energy required: %d)%n", i + 1, quest.getName(), quest.getEnergyRequired());
             }
+            int pusakaNumber = nextQuests.size() + 1;
+            System.out.println(pusakaNumber + ". Use Pusaka");
 
             System.out.print("Choose your next quest: ");
             int choice = scanner.nextInt();
 
-            if (choice < 1 || choice > nextQuests.size()) {
+            if (choice < 1 || choice > nextQuests.size()+1) {
                 System.out.println("Invalid choice. Exiting game.");
                 break;
+            }
+
+            if (choice == nextQuests.size()+1){
+                usePusaka();
             }
 
             currentQuest = getNextQuest(currentQuest, choice);
@@ -68,6 +79,10 @@ public class GameEngine {
             System.out.println("You chose not to use the pusaka. Proceeding with quests...");
         }
         scanner.close();
+    }
+
+    private void usePusaka(){
+
     }
 
     // Menyelesaikan quest dan memberikan reward

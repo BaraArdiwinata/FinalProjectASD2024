@@ -1,20 +1,13 @@
 public class Monster {
-    private int id; // ID monster
     private String name;
-    private int requiredCoins; // Coins yang dibutuhkan untuk mengalahkan monster
+    private int requiredEnergy; // Energy yang dibutuhkan untuk mengalahkan monster
     private BinarySearchTree bst;
     private int value; // Nilai monster
 
-    public Monster(int id, String name, int requiredCoins) {
-        this.id = id;
+    public Monster(String name, int requiredEnergy) {
         this.name = name;
-        this.requiredCoins = requiredCoins;
+        this.requiredEnergy = requiredEnergy;
         this.bst = new BinarySearchTree();  // Inisialisasi Binary Search Tree
-    }
-
-    // Getter untuk ID monster
-    public int getId() {
-        return id;
     }
 
     // Getter untuk nama monster
@@ -27,10 +20,7 @@ public class Monster {
         return value;
     }
 
-    // Getter untuk coins yang dibutuhkan
-    public int getRequiredCoins() {
-        return requiredCoins;
-    }
+    public int getRequiredEnergy() {return requiredEnergy;}
 
     // Menambahkan nilai ke dalam BST
     public void addVitalObject(int value) {
