@@ -32,7 +32,17 @@ public class Main {
             return;
         }
 
-        // Step 2: Menampilkan pilihan jalur start
+        // Step 2 : Pemilihan Monster / Finish
+        Monster chosenMonster = null;
+        int randomIntMonster = (int) (Math.random() * 10 % 3);
+        switch (randomIntMonster){
+            case 0 -> chosenMonster = new Monster(0, "Infernal Dragon", 60);
+            case 1 -> chosenMonster = new Monster(1, "Dark Leviathan", 50);
+            case 2 -> chosenMonster = new Monster(2, "Blood Wraith", 60);
+        }
+        System.out.println("You have chosen to fight " + chosenMonster.getName() + "!");
+
+        // Step 3: Menampilkan pilihan jalur start
         System.out.println("Choose your starting path:");
         System.out.println("1. Field of Light");
         System.out.println("2. Fortress of Faith");
@@ -52,27 +62,6 @@ public class Main {
 
         Potter potter = new Potter(); // Asumsi Potter butuh energy saat inisialisasi
         GameEngine gameEngine = new GameEngine(potter);
-
-        // Step 5: Menampilkan pilihan monster
-        System.out.println("Choose the monster to defeat (Enter the number):");
-        System.out.println("1. Infernal Dragon");
-        System.out.println("2. Dark Leviathan");
-        System.out.println("3. Blood Wraith");
-
-        int choice = scanner.nextInt();
-        Monster chosenMonster = null;
-
-        switch (choice) {
-            case 1 -> chosenMonster = new Monster(1, "Infernal Dragon", 60);
-            case 2 -> chosenMonster = new Monster(2, "Dark Leviathan", 50);
-            case 3 -> chosenMonster = new Monster(3, "Blood Wraith", 60);
-            default -> {
-                System.out.println("Invalid choice. Please select a valid monster.");
-                return;
-            }
-        }
-
-        System.out.println("You have chosen to fight " + chosenMonster.getName() + "!");
 
         // Step 8: Menggunakan pusaka atau tidak
         System.out.println("Do you want to use the pusaka? (Yes/No): ");
