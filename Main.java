@@ -2,6 +2,46 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+        System.out.println("Welcome to the Kingdom of Naradhista. Here is your travel map! Let's complete the missions and defeat the monsters!");
+        System.out.print("                   SQ15--------10-------SQ11\n");
+        System.out.print("                   /\\                   /\\   \\\n");
+        System.out.print("                  8  \\                 /  \\    15\n");
+        System.out.print("                 /    \\               /    \\      \\\n");
+        System.out.print("                SQ8    \\             /      \\       \\\n");
+        System.out.print("               /   \\    \\           /        9         F1\n");
+        System.out.print("              /      \\   14        10         \\           \\\n");
+        System.out.print("             /         \\   \\      /            \\             8\n");
+        System.out.print("           15           20  \\    /              \\               \\\n");
+        System.out.print("          /               \\  \\  /              M3--------7--------SQ6\n");
+        System.out.print("         /                  \\ \\/              /\\  \\                  \\\n");
+        System.out.print("       S1-----10-----M1---8--SQ1            /   \\   \\                   \\\n");
+        System.out.print("      /   \\             \\      \\          /      \\    10                  12\n");
+        System.out.print("     /     \\              \\     \\       13        \\     \\                    \\\n");
+        System.out.print("    0       17              17   10    /           \\      \\                     \\\n");
+        System.out.print("   /         \\                \\   \\   /             \\       SQ14-------16--------F2\n");
+        System.out.print("  /           \\                 \\  \\/                6          \\               /\n");
+        System.out.print("Start        SQ2--------12--------M2                  \\           \\            /\n");
+        System.out.print("  \\   \\       /                   /                    \\            16        13\n");
+        System.out.print("   \\    0    8                   8                      \\              \\     /\n");
+        System.out.print("    \\     \\ /                   /                        \\               \\  /\n");
+        System.out.print("     0      S2-------14-------SQ3------------20------------SQ5-------------SQ7\n");
+        System.out.print("      \\       \\            /                              /                /   \\\n");
+        System.out.print("       \\        20       4                              8                10      15\n");
+        System.out.print("        \\          \\   /                               /                /           \\\n");
+        System.out.print("         S3----13----M5--------------14-------------SQ4-------14-------M4------17-----F3\n");
+        System.out.print("            \\        / \\                           /  \\                /  \\          /\n");
+        System.out.print("             \\      /   \\                        /     \\              /    10      9\n");
+        System.out.print("              8    10    \\                     /        \\            /        \\  /\n");
+        System.out.print("               \\   /      \\                  /           \\          /         SQ12\n");
+        System.out.print("                \\ /       13               15             14       8        /\n");
+        System.out.print("                 SQ9       \\             /                 \\      /       /\n");
+        System.out.print("                      \\     \\          /                    \\    /     15\n");
+        System.out.print("                         12   \\      /                       \\  /    /\n");
+        System.out.print("                            \\  \\   /                          \\/   /\n");
+        System.out.print("                               SQ13 -----------16----------- SQ10/\n");
+
+
         Scanner scanner = new Scanner(System.in);
 
         // Inisialisasi graf untuk jalur perjalanan
