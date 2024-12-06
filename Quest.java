@@ -36,22 +36,4 @@ public class Quest {
         return isMainQuest;
     }
 
-    // Metode untuk menyelesaikan quest
-    public void complete(Potter potter) {
-        if (potter.getEnergy() >= energyRequired) {
-            potter.decreaseEnergy(energyRequired);
-            potter.addCoins(coinReward);
-
-            if (!isMainQuest) {
-                potter.setEnergy(potter.getEnergy() + energyRestored);
-            }
-
-            System.out.println(name + " completed! Reward: " + coinReward + " coins.");
-            if (!isMainQuest) {
-                System.out.println("Energy restored: " + energyRestored);
-            }
-        } else {
-            System.out.println("Not enough energy for " + name);
-        }
-    }
 }

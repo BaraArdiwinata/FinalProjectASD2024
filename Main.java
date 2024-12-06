@@ -61,9 +61,6 @@ public class Main {
         graph.addEdge(SQInit().get(7-1), MonsInit().get(3-1), 15);
         graph.addEdge(SQInit().get(12-1), MonsInit().get(3-1), 9);
 
-        // Energi awal pemain
-        int initialEnergy = 250;
-
         // Step 1: Konfirmasi kesiapan bermain
         System.out.println("Are you ready to play the Quest Navigation game? (Yes/No): ");
         String ready = scanner.next();
@@ -89,77 +86,21 @@ public class Main {
         System.out.println("2. Fortress of Faith");
         System.out.println("3. Tower of Fate’s Dawn");
 
-        int pathChoice = scanner.nextInt();
+        int startChoice = scanner.nextInt();
 
-        if (pathChoice < 1 || pathChoice > 3) {
+        if (startChoice < 1 || startChoice > 3) {
             System.out.println("Invalid path choice. Please select a valid path.");
             return;
         } else {
-            System.out.println("You have chosen " + (pathChoice == 1 ? "Field of Light" :
-                    pathChoice == 2 ? "Fortress of Faith" : "Tower of Fate’s Dawn") + " as your path!");
+            System.out.println("You have chosen " + (startChoice == 1 ? "Field of Light" :
+                    startChoice == 2 ? "Fortress of Faith" : "Tower of Fate’s Dawn") + " as your path!");
         }
 
-        System.out.println("Your initial energy is: " + initialEnergy);
+        Potter potter = new Potter();
+        System.out.println("Your initial energy is: " + potter.getEnergy());
 
-        Potter potter = new Potter(); // Asumsi Potter butuh energy saat inisialisasi
-        GameEngine gameEngine = new GameEngine(potter);
-
-//        // Step 8: Menggunakan pusaka atau tidak
-//        System.out.println("Do you want to use the pusaka? (Yes/No): ");
-//        String usePusaka = scanner.next();
-//
-//        if (usePusaka.equalsIgnoreCase("Yes")) {
-//            System.out.println("You chose to use the pusaka. You will fight the monster directly.");
-//            initialEnergy -= 100;
-//            System.out.println("Your energy is reduced by 100. Remaining energy: " + initialEnergy);
-//
-//            // Step 9: Pemain memasukkan angka untuk melawan monster
-//            System.out.println("Enter a random number between 1 and 100 to attack the monster: ");
-//            int playerChoice = scanner.nextInt();
-//
-//            // Logika BST tetap
-//            VitalObject vitalObject = new VitalObject();
-//            int depth = vitalObject.findDepth(playerChoice);
-//
-//            if (depth == -1) {
-//                System.out.println("The number " + playerChoice + " is not found in the BST. You failed to defeat the monster.");
-//                return;
-//            }
-//
-//            int coinsEarned = depth * 10;
-//            System.out.println("You earned " + coinsEarned + " coins for reaching depth " + depth);
-//
-//            int requiredCoins = chosenMonster.getValue();
-//            if (coinsEarned >= requiredCoins) {
-//                System.out.println(chosenMonster.getName() + " defeated!");
-//                System.out.println("You received " + coinsEarned + " coins as a reward.");
-//            } else {
-//                System.out.println("You do not have enough coins to defeat " + chosenMonster.getName() + ".");
-//                System.out.println("You need " + requiredCoins + " coins to defeat the monster.");
-//            }
-//        } else {
-//            // Step 10: Quest tanpa pusaka
-//            System.out.println("You chose not to use the pusaka. Here are your quest options:");
-//            String currentQuest = pathChoice == 1 ? "S1" : pathChoice == 2 ? "S2" : "S3";
-//
-//            while (!currentQuest.equals("Finish")) {
-//                gameEngine.displayQuestOptions(currentQuest); // Memanggil dari GameEngine
-//                int questChoice = scanner.nextInt();
-//
-//                if (questChoice < 1 || questChoice > 5) {
-//                    System.out.println("Invalid quest choice. Please select a valid quest.");
-//                    continue;
-//                }
-//
-//                currentQuest = gameEngine.getNextQuest(currentQuest, questChoice); // Memanggil dari GameEngine
-//
-//                if (currentQuest.equals("Finish")) {
-//                    System.out.println("You have reached the finish point of your journey!");
-//                    break;
-//                }
-//            }
-//
-//        }
+        Walking walking = new Walking(potter, chosenMonster, MQInit(), SQInit(), graph);
+        walking.startGame(startChoice);
     }
 
     static List<Quest> MQInit() {
@@ -198,9 +139,11 @@ public class Main {
         monsters.add(new Monster("Dark Leviathan", 60));
         monsters.add(new Monster("Blood Wraith", 60));
 
-        int[] vitalObjectF1 = {1, 2, 3};
-        int[] vitalObjectF2 = {1, 2, 3};
-        int[] vitalObjectF3 = {1, 2, 3};
+        int[] vitalObjectF1 = {1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 15, 16, 17, 19, 20, 22, 23, 24, 26, 27, 28, 30, 32, 33, 35, 39, 41, 42, 43, 44, 46, 50, 51, 52, 54, 55, 56, 58, 59, 60, 61, 64, 65, 67, 68, 69, 72, 73, 75, 76, 77, 79, 83, 84, 87, 89, 90, 91, 92, 94, 95, 97, 99
+        };
+        int[] vitalObjectF2 = {6, 8, 10, 12, 15, 19, 22, 24, 28, 30, 35, 38, 43, 45, 47, 50, 52, 54, 57, 60, 65, 68, 72, 76, 80, 83, 85, 88, 90, 95, 98
+        };
+        int[] vitalObjectF3 = {1, 2, 3, 7, 8, 9, 10, 11, 12, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24, 26, 27, 28, 31, 32, 33, 34, 35, 36, 37, 39, 42, 44, 45, 48, 49, 51, 52, 55, 57, 58, 59, 61, 63, 65, 66, 67, 71, 72, 73, 74, 76, 77, 78, 81, 83, 87, 90, 91, 93, 95, 96, 97, 98};
 
         for (int i = 0; i<vitalObjectF1.length; i++){monsters.get(0).addVitalObject(i);}
         for (int i = 0; i<vitalObjectF2.length; i++){monsters.get(1).addVitalObject(i);}
