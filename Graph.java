@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Graph {
-    private Map<String, List<Edge>> adjList;
+    private Map<Object, List<Edge>> adjList;
 
     public Graph() {
         adjList = new HashMap<>();
@@ -12,25 +12,23 @@ public class Graph {
         adjList.computeIfAbsent(to, k -> new ArrayList<>()).add(new Edge(from, energyCost));
     }
 
-    public List<Edge> getEdges(String node) {
+    public List<Edge> getEdges(Object node) {
         return adjList.getOrDefault(node, new ArrayList<>());
     }
 
     public static class Edge {
-        String to;
+        public static int getEnergyCost;
+        Object to;
         int energyCost;
 
-        public Edge(String to, int energyCost) {
+        public Edge(Object to, int energyCost) {
             this.to = to;
             this.energyCost = energyCost;
         }
 
-        public String getTo() {
+        public Object getTo() {
             return to;
         }
 
-        public int getEnergyCost() {
-            return energyCost;
-        }
     }
 }
